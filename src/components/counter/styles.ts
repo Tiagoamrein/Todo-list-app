@@ -15,11 +15,11 @@ import { StyleSheet } from "react-native";
   maids: {
     color:'#4EA8DE',
     marginRight:200,
-    fontSize:18
+    fontSize:15
   },
   completed:{
     color: '#8284FA',
-    fontSize:18
+    fontSize:15
   },
   count:{
     color:'white',
