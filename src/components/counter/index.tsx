@@ -14,8 +14,7 @@ export default function Counter(){
     <View style={styles.container}>
      
       <Text style={styles.maids}>Criadas <Text style={styles.count}>{count} </Text></Text>
-      <Text style={styles.completed}>Concluidas <Text style={styles.count}>{count} </Text></Text>
-
+      <Text style={styles.completed}>Concluidas <Text style={styles.count}>{count} </Text></Text> 
     </View>
   )
 }

@@ -1,7 +1,7 @@
 import { StatusBar, View, } from "react-native"
-import Header from "./src/screens/Header"
-import Task from "./src/screens/Task"
+import Home from "./src/screens/Home"
 import Counter from "./src/components/counter"
+import Header from "./src/components/Header"
 
 
 
@@ -10,9 +10,9 @@ export default function App() {
     
    <>
   <StatusBar  backgroundColor='transparent' barStyle="default" translucent  />
-   <Header/>
-   <Counter/>
-   <Task/>
+  <Header/>
+   <Home/>
+   
   </>
 )}
 

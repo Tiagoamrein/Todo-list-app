@@ -1,38 +1,36 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-
   container:{
     flex:1,
-    backgroundColor: '#0D0D0D',
     alignItems: 'center',
-    justifyContent: 'center',
-    margin:0,
-    zIndex:1,
-    gap:-100
-    
+    backgroundColor: '#0D0D0D',
   },
-  image:{
-    marginTop:90
-  },
-  main:{
+  tasks:{
     flex:1,
     width:'100%',
-    
-    flexDirection:'row',
-    alignItems:'center',
-    marginBottom:-140,
     padding:0,
+    marginTop:40,
+    backgroundColor: '#272727',
+  },
+  inputContainer: {
+    position: 'absolute',
+    width: '100%',
+    flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: 36,
+    alignItems: 'center',
+    zIndex: 1,
+    marginTop:18
+   
   },
   input:{
     backgroundColor:'#363636',
     height: 42,
-    width:276,
+    width: 265,
     borderRadius: 10,
-    marginLeft:26,
-    padding:10,
-    color:'#0D0D0D'
+    padding: 10,
+    color: '#0D0D0D',
   },
   button: {
     width: 42,
@@ -41,14 +39,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
-    marginRight:26
+    marginLeft: 1,
+    
   },
   buttonText: {
     color: '#FFFFFF',
     fontSize: 18,
   },
-  
-
-
-})
-
+  empty:{
+    height: 42,
+    backgroundColor: '#272727',
+  },
+});
