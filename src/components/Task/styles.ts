@@ -3,20 +3,34 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 
   container:{
-    flex:2,
-    backgroundColor: '#272727',
+    flexDirection:'row',
+    backgroundColor: '#363636',
+    alignItems: 'center',
+    justifyContent:'space-between',
+    padding: 2,
+    height:64,
+    borderRadius:10,
+    width:330,
+    marginLeft:32,
+    marginTop:11,
+    gap:2
+  },
+  check:{
+    height:24,
+    width:24,
     
+
   },
   text:{
-    color: '#808077',
-    fontSize: 18,
-    marginLeft:22,
-    fontWeight:'bold'
+    marginLeft:0,
+    width:230,
+    fontSize:18,
+    textAlign: 'justify',
   },
-  text2:{
-    color: '#808077',
-    fontSize: 18,
-    marginLeft:20,
+  trash:{
+    height:34,
+    width:34,
+    
   }
 })
 

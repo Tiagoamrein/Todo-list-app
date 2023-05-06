@@ -1,19 +1,51 @@
-import { View, Text, Image, TextInput, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 import { styles } from "./styles";
-import Counter from "../../components/counter"
+import TaskCounter from "../../components/TaskCounter"
 import Task from "../../components/Task"
 import { useState } from "react";
 
 export default function Home() {
-  const [task, setTask] = useState('');
+  const [newTask, setNewTask] = useState<string[]>([])
+  const [taskName, setTaskName]= useState('')
+  const [completedTasks, setCompletedTasks] = useState<string[]>([])
 
   function taskAdd(){
-    console.log('adicinou uma tarefa');
+    if(taskName.length ===0){
+      return Alert.alert("Digite uma tarefa")
+    }
+    setNewTask(prevState =>[...prevState, taskName])
+    setTaskName('')
   }
   
-//Verificar se esta execultando a funcion acima
-///Tentar adicinar qualquer task para começar a densenvolver o app
+  function HandlerRemoveTask(task:string) {
+    Alert.alert("Remover", `Remover a tarefa ${taskName}?`, [
+      {
+        text: 'Sim',
+        onPress:()=> setNewTask(prevState=> prevState.filter(p=> p!==task))
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
+  }
 
+  function handleCompleteTask(task: string) {
+    Alert.alert('Tarefa concluida','', 
+    [
+      {
+        text: 'Sim',
+        onPress: () => setCompletedTasks(prevState => [...prevState, task])
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ]
+    
+    )
+    
+  }
 
   return (
     <View style={styles.container}>
@@ -22,35 +54,33 @@ export default function Home() {
           placeholder="Adicione uma nova tarefa" 
           placeholderTextColor="#888888" 
           style={styles.input}
+          onChangeText={setTaskName}
+          value={taskName}
           
           
         />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
+        <TouchableOpacity style={styles.button} onPress={taskAdd}>
+          <Text style={styles.buttonText} >
             +
           </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.tasks} >
-        <Counter/>
-        <FlatList  
-          data={task}
-          keyExtractor={item => item}
-          renderItem={({item})=> (
-            <Task
-            name={item}
-            key={item}
-            />
-          )}
-          ListEmptyComponent={item => {
-            return(
-              <Text style={styles.empty}>
-                Nenhuma tarefa cadastrada
-              </Text>
-            )
-          }}
-          showsVerticalScrollIndicator={false}
+      <TaskCounter created={newTask.length} completed={completedTasks.length} />
+        <FlatList
+        data={newTask}
+        keyExtractor={item=>item}
+        renderItem={({ item }) => <Task task={item} onRemove={() => HandlerRemoveTask(item)} onComplete={() => handleCompleteTask(item)} />}
+         
+        ListEmptyComponent={()=>(
+          <View style={styles.empty}>
+          <Image style={styles.emptyImg} source={require('../../../assets/Clipboard.png')}/>
+          <Text style={[styles.emptyText, {fontWeight:'bold'}]}>Você ainda não tem tarefas cadastradas</Text>
+          <Text style={styles.emptyText}>Crie tarefas e organize seus itens a fazer</Text>
+          </View>
+        )}
         />
+        
       </View>
     </View>
   )

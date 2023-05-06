@@ -1,17 +1,22 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image,TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 
 type Props={
-  name: string
+  task: string
+  onRemove: ()=> void
+  onComplete:()=> void
 }
 
-export default function TaskEmpty({name}:Props){
+export default function TaskEmpty({task, onRemove, onComplete}:Props){
 
   return(
     <View style={styles.container}>
-      <View>
-      <Text style={styles.text}>Esta rederizando a task</Text>
-      <Text style={styles.text2}> Crie tarefas e organize seus itens a fazer</Text>
-      </View>
+      <TouchableOpacity onPress={onComplete}>
+      <Image style={styles.check} source={require("../../../assets/check.png")} />
+      </TouchableOpacity>
+      <Text style={styles.text}>{task}</Text>
+      <TouchableOpacity onPress={onRemove}>
+      <Image style={styles.trash} source={require("../../../assets/trash.png")} />
+      </TouchableOpacity> 
     </View>
   )}

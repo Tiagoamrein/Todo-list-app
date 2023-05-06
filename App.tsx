@@ -1,6 +1,6 @@
 import { StatusBar, View, } from "react-native"
 import Home from "./src/screens/Home"
-import Counter from "./src/components/counter"
+import Counter from "./src/components/TaskCounter"
 import Header from "./src/components/Header"
 
 

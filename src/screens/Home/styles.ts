@@ -30,7 +30,8 @@ export const styles = StyleSheet.create({
     width: 265,
     borderRadius: 10,
     padding: 10,
-    color: '#0D0D0D',
+    color: '#F2F2F2',
+    fontSize:16
   },
   button: {
     width: 42,
@@ -47,7 +48,18 @@ export const styles = StyleSheet.create({
     fontSize: 18,
   },
   empty:{
-    height: 42,
+    height:200,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#272727',
+  },
+  emptyImg:{
+    width:100,
+    height:100,
+    resizeMode: 'contain',
+  },
+  emptyText:{
+    color: '#808080',
+    fontSize: 18,
   },
 });
